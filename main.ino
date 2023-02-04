@@ -142,16 +142,14 @@ void setup() {
 BLYNK_WRITE(V0) {                                 // Status for the V0 virtual pin
   forward_status = param.asInt();                 // Sets the status to a variable
 }
-
 BLYNK_WRITE(V1) {                                 // Status for the V1 virtual pin
   backward_status = param.asInt();                // Sets the status to a variable
 }
-BLYNK_WRITE(V2) {
-  right_status = param.asInt();
+BLYNK_WRITE(V2) {                                 // Status for the V2 virtual pin
+  right_status = param.asInt();                   // Sets the status to a variable
 }
-
-BLYNK_WRITE(V3) {
-  left_status = param.asInt();
+BLYNK_WRITE(V3) {                                 // Status for the V3 virtual pin
+  left_status = param.asInt();                    // Sets the status to a variable
 }
 
 void loop() {
