@@ -1,3 +1,21 @@
+/*************************************************************
+  WARNING!
+    It's very tricky to get it working. Please read this article:
+    http://help.blynk.cc/hardware-and-libraries/arduino/esp8266-with-at-firmware
+
+  You’ll need:
+   - Blynk IoT app (download from App Store or Google Play)
+   - Arduino Uno board
+   - Decide how to connect to Blynk
+     (USB, Ethernet, Wi-Fi, Bluetooth, ...)
+
+  There is a bunch of great example sketches included to show you how to get
+  started. Think of them as LEGO bricks  and combine them as you wish.
+  For example, take the Ethernet Shield sketch and combine it with the
+  Servo example, or choose a USB sketch and add a code from SendData
+  example.
+ *************************************************************/
+
 // Template ID, Device Name and Auth Token are provided by the Blynk.Cloud
 // See the Device Info tab, or Template settings
 #define BLYNK_TEMPLATE_ID "TMPLRzpJtSIp"
@@ -12,14 +30,16 @@
 #include <BlynkSimpleShieldEsp8266.h>
 
 // define pins for stepper motor
-#define firstStepperPin1 8
-#define firstStepperPin2 9
-#define firstStepperPin3 10
-#define firstStepperPin4 11
-#define secondStepperPin1 4
-#define secondStepperPin2 5
-#define secondStepperPin3 6
-#define secondStepperPin4 7
+// right steppermotor
+#define firstStepperPin1 11
+#define firstStepperPin2 10
+#define firstStepperPin3 9
+#define firstStepperPin4 8
+// left steppermotor
+#define secondStepperPin1 7
+#define secondStepperPin2 6
+#define secondStepperPin3 5
+#define secondStepperPin4 4
 
 char auth[] = BLYNK_AUTH_TOKEN;
 
@@ -47,8 +67,8 @@ const byte seqArr[4][4] = {
 
 // array with pins used for stepper for easy iteration
 const byte pins[2][4] = {
-  {firstStepperPin1, firstStepperPin2, firstStepperPin3, firstStepperPin4},             // Right stepper
-  {secondStepperPin1, secondStepperPin2, secondStepperPin3, secondStepperPin4}          // Left stepper
+  {secondStepperPin1, secondStepperPin2, secondStepperPin3, secondStepperPin4},          // Left stepper
+  {firstStepperPin1, firstStepperPin2, firstStepperPin3, firstStepperPin4}               // Right stepper
 };
 
 // button status variables
@@ -88,7 +108,7 @@ void travel(String dir) {
     for (int arrNum = 3; arrNum > -1; arrNum--) {                                      // Index of what sequence array is used in the 2d arrary seqArr
       delay(4);
       for (int pinStatus = 0; pinStatus < 4; pinStatus++) {                            // Index of what the status of the pin in this position will be
-        digitalWrite(pins[1][pinStatus], seqArr[arrNum][pinStatus]);                  // write the correct status for each of the pins in right stepper
+        digitalWrite(pins[1][pinStatus], seqArr[arrNum][pinStatus]);                   // write the correct status for each of the pins in right stepper
       }
     }
     // right stepper
@@ -105,7 +125,7 @@ void travel(String dir) {
     for (int arrNum = 3; arrNum > -1; arrNum--) {                                      // Index of what sequence array is used in the 2d arrary seqArr
       delay(4);
       for (int pinStatus = 0; pinStatus < 4; pinStatus++) {                            // Index of what the status of the pin in this position will be
-        digitalWrite(pins[0][pinStatus], seqArr[arrNum][pinStatus]);                  // write the correct status for each of the pins in right stepper
+        digitalWrite(pins[0][pinStatus], seqArr[arrNum][pinStatus]);                   // write the correct status for each of the pins in right stepper
       }
     }
     // left stepper
