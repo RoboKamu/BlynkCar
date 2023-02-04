@@ -1,21 +1,3 @@
-/*************************************************************
-  WARNING!
-    It's very tricky to get it working. Please read this article:
-    http://help.blynk.cc/hardware-and-libraries/arduino/esp8266-with-at-firmware
-
-  You’ll need:
-   - Blynk IoT app (download from App Store or Google Play)
-   - Arduino Uno board
-   - Decide how to connect to Blynk
-     (USB, Ethernet, Wi-Fi, Bluetooth, ...)
-
-  There is a bunch of great example sketches included to show you how to get
-  started. Think of them as LEGO bricks  and combine them as you wish.
-  For example, take the Ethernet Shield sketch and combine it with the
-  Servo example, or choose a USB sketch and add a code from SendData
-  example.
- *************************************************************/
-
 // Template ID, Device Name and Auth Token are provided by the Blynk.Cloud
 // See the Device Info tab, or Template settings
 #define BLYNK_TEMPLATE_ID "TMPLRzpJtSIp"
